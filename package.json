@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "ESA-Helper Tool",
   "author": "ESA-Grimma",
-  "main": "public/main_electron.js",
+  "main": "public/electron.js",
   "build": {
     "appId": "ESA.Tool",
     "win": {
