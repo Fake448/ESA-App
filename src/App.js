@@ -8,12 +8,11 @@ function App() {
         Suchen & kopieren
       </header>
 
-        <div style={{paddingTop:10}}>
+        <div style={{paddingTop:10, paddingLeft:10}}>
           <textarea style={{height:600, width:400}}></textarea>
         </div>
         <button>Zielordner</button>
         <button>search & copy</button>
-        test123
       App
     </div>
   );
