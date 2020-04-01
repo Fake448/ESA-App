@@ -18,6 +18,8 @@
     "@testing-library/user-event": "^7.2.1",
     "cross-env": "^7.0.0",
     "electron-is-dev": "^1.1.0",
+    "electron-next": "^3.1.5",
+    "next": "^9.3.3",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0"
@@ -27,9 +29,10 @@
     "react-build": "react-scripts build",
     "react-test": "react-scripts test",
     "react-eject": "react-scripts eject",
-    "electron-build": "electron-builder",
+    "electron-build": "next build && next export && electron-builder",
     "build": "npm run react-build && npm run electron-build",
-    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
+    "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\"",
+    "test": "next build ./public"
   },
   "eslintConfig": {
     "extends": "react-app"
