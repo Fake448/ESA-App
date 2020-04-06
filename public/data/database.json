@@ -1,0 +1,31 @@
+{
+   "Parts": [
+      {
+         "Name": "Bodenblech",
+         "Color": "RAL 7009",
+         "ArtNumber": "F-BL.12345"
+      },
+      {
+         "Name": "Dachblech",
+         "Color": "RAL 7009",
+         "ArtNumber": "F-BL.32453"
+      }
+   ],
+   "Assemblys": [
+      {
+         "Name": "AS-21",
+         "Color": "RAL 7009",
+         "ArtNumber": "F-BL.12345"
+      },
+      {
+         "Name": "AS-31",
+         "Color": "RAL 7009",
+         "ArtNumber": "F-BL.12345"
+      },
+      {
+         "Name": "ES-",
+         "Color": "RAL 7009",
+         "ArtNumber": "F-BL.12345"
+      }
+   ]
+}
