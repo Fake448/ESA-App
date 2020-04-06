@@ -1,10 +1,7 @@
 
-const mystyle = {
-}
+const { remote } = require('electron')
+window = remote.getCurrentWindow();
 
-const Test = () => (
-  <div style={mystyle}>
-  </div>
-);
+console.log(window);
+console.log("test");
 
-export default Test;

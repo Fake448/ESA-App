@@ -1,27 +1,16 @@
-import Link from 'next/link';
-import NavBar from './NavBar';
+import React from "react";
 
 const style = {
-  background: 'linear-gradient(to right bottom, #ffffff, #0081ff)',
-  height: "100px"
-}
-
-const linkStyle = {
-  marginRight: 15
+  background: "linear-gradient(to right bottom, #ffffff, #0081ff)",
+  height: "100px",
 };
 
-const Header = () => (
-  <div style={style}>
-    <div>
-      <NavBar />
-    </div>
-    <Link href="/">
-      <a style={linkStyle}>Home</a>
-    </Link>
-    <Link href="/about">
-      <a style={linkStyle}>About</a>
-    </Link>
-  </div>
-);
-
-export default Header;
+export default class Header extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <div className="header" style={style}>ESA - Tool </div>{" "}
+    </React.Fragment>
+    );
+  }
+}
