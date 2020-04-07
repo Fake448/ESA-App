@@ -10,6 +10,18 @@ let currentID;
 
 //  Setup     DEVELOP - Environment
 const devPath = "http://localhost:3000";
+function prodpath (src) {
+	const target = "../build/index.html?" + src
+	console.log("Target:");
+	console.log(target);
+	
+	// `file://${path.join(__dirname, "../build/index.html?viewMain")}`
+
+	return target
+}
+
+
+
 
 function getDataBase() {
 	fs.readFile(__dirname + "/data/database.json", function(err, data) {
@@ -23,6 +35,8 @@ function getDataBase() {
 
 function createMainWindow() {
 	Datenbase = getDataBase();
+	console.log("test");
+	
 	MainWindow = new BrowserWindow({
 		width: 600,
 		height: 1000,
@@ -36,11 +50,13 @@ function createMainWindow() {
 			? devPath + "?viewMain"
 			: `file://${path.join(__dirname, "../build/index.html?viewMain")}`
 	);
+
 	MainWindow.webContents.openDevTools();
 	const {
 		default: installExtension,
 		REACT_DEVELOPER_TOOLS,
 	} = require("electron-devtools-installer");
+
 	installExtension(REACT_DEVELOPER_TOOLS)
 		.then((name) => {
 			console.log("added Extension: REACT_DEVELOPER_TOOLS");

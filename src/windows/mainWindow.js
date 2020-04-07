@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import Layout from "../windows/layout"
-
+import Sidebar from '../components/SideBar'
+import Header from "../components/Header";
+import Content from "../components/Content";
 const { ipcRenderer } = window.require("electron");
 
 class mainWindow extends Component {
@@ -24,7 +25,11 @@ class mainWindow extends Component {
 
     return (
       <React.Fragment>
-        <Layout />
+        <Header />
+        <div className="container">
+        <Sidebar />
+        <Content />
+        </div>
       </React.Fragment>
     );
   }
