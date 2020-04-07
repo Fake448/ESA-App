@@ -9,7 +9,6 @@ class mainWindow extends Component {
   
   constructor(props) {
     super(props);
-    const component = this.state.component 
     ipcRenderer.on("receiveArtikelData", (e, parts) => {
       this.setState({ parts: parts });
     });
