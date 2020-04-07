@@ -1,5 +1,4 @@
 import React from "react";
-import {slide as menu} from 'react-burger-menu'
 
 const style = {
   background: "linear-gradient(to right bottom, #ffffff, #0081ff)",
