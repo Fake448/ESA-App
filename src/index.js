@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ViewManager from './windows/ViewManager';
-import './index.css'
+import React from "react";
+import ReactDOM from "react-dom";
 
+import ViewManager from "./windows/ViewManager";
+import "./index.css";
 
-ReactDOM.render(<ViewManager />, document.getElementById('root'));
+ReactDOM.render(<ViewManager />, document.getElementById("root"));
