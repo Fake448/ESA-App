@@ -29,7 +29,7 @@ function createMainWindow() {
       },
    });
 
-   MainWindow.loadURL(isDev ? devPath + "viewMain" : prodPath("viewMain"));
+   MainWindow.loadURL(isDev ? devPath + "viewMain" : `file://${path.join(__dirname, "../build/index.html?viewMain")}`);
 
    // 	DEV 	Extras
    MainWindow.webContents.openDevTools();
@@ -103,7 +103,7 @@ function createArtikelWindow() {
       },
    });
    ArtikelWindow.loadURL(
-      isDev ? devPath + "viewArtikel" : prodPath("viewArtikel")
+      isDev ? devPath + "viewArtikel" : `file://${path.join(__dirname, "../build/index.html?viewMain")}`
    );
 }
 
