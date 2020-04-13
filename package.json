@@ -1,37 +1,37 @@
 {
   "name": "ESA-App",
-  "version": "0.1.0",
   "description": "ESA-Helper Tool",
   "author": "ESA-Grimma",
-  "main": "public/electron.js",
-  "build": {
-    "appId": "ESA.Tool",
-    "win": {
-      "icon": "public/img/logo/icon.png",
-      "target": "portable"
-    }
-  },
+  "version": "0.1.0",
   "homepage": "./",
+  "main": "public/electron.js",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.1",
     "@testing-library/user-event": "^7.2.1",
     "cross-env": "^7.0.0",
-    "electron-is-dev": "^1.1.0",
+    "electron-is-dev": "^1.2.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
+    "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "react-start": "react-scripts start",
     "react-build": "react-scripts build",
     "react-test": "react-scripts test",
-    "react-eject": "react-scripts eject",
     "electron-build": "electron-builder",
     "build": "npm run react-build && npm run electron-build",
     "start": "concurrently \"cross-env BROWSER=none npm run react-start\" \"wait-on http://localhost:3000 && electron .\""
+  },
+  "build": {
+    "appId": "ESA.Tool",
+    "win": {
+      "icon": "public/img/logo/icon.png"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,9 +50,9 @@
   },
   "devDependencies": {
     "concurrently": "^5.1.0",
-    "electron": "^8.0.2",
+    "electron": "^8.2.1",
     "electron-builder": "^22.3.2",
     "electron-devtools-installer": "^2.2.4",
-    "wait-on": "^4.0.1"
+    "wait-on": "^4.0.2"
   }
 }

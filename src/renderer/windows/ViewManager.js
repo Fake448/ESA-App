@@ -1,13 +1,17 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Main from "./mainWindow";
-import Artikel from "./artikelWindow";
+
+
+import Main from "./main";
+import Artikel from "./artikel";
+
+
 
 class ViewManager extends Component {
   static Views() {
     return {
       viewMain: <Main />,
-      viewArtikel: <Artikel />
+      viewArtikel: <Artikel />,
     };
   }
 

@@ -22,4 +22,5 @@ class artikelWindow extends Component{
         );
     }
 }
+
 export default artikelWindow;
