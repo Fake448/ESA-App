@@ -1,21 +1,40 @@
 import React from "react";
+import './SideBar.css'
 
-const style = {
-  background: "linear-gradient(to right bottom, #ffffff, #0081ff)",
-  height: "100vh",
-  width: "100px",
-  padding: "0",
-};
-
+const navLinks = [
+   {
+      text : 'home',
+      path : '/',
+      icon : ''
+   },
+   {
+      text : 'GIV',
+      path : '/GIV',
+      icon : ''
+   },
+   {
+      text : 'GNS',
+      path : '/GNS',
+      icon : ''
+   },
+   {
+      text : 'Elektrant',
+      path : '/Elektrant',
+      icon : ''
+   },
+]
 
 
 
 
 export default class Sidebar extends React.Component {
+
+
+
    render() {
       return (
          <React.Fragment>
-            <div className="sidebar" style={style}>
+            <div className="sidebar">
                <ul>
                   <li>Home</li>
                   <li>GIV</li>

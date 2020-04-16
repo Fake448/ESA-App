@@ -1,0 +1,6 @@
+.main_wrapper {
+   background: rgb(242, 252, 255);
+   display: flex;
+   height: 100%;
+   padding: 0;
+}

@@ -19,15 +19,19 @@ class ViewManager extends Component {
     let name = props.location.search.substr(1);
     let view = ViewManager.Views()[name];
     if (view == null) throw new Error("View '" + name + "' is undefined");
+    // console.log(Route);
     return view;
   }
+
+  
 
   render() {
     return (
       <Router>
-        <React.Fragment>
           <Route path="/" component={ViewManager.View} />
-        </React.Fragment>
+          {/* <Route path="/viewMain"><Main /></Route> */}
+          {/* <Route path="/Main"><Main /></Route> */}
+          {/* <Route path="/Artikel"><Artikel /></Route> */}
       </Router>
     );
   }

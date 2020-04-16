@@ -1,19 +1,21 @@
 import React, { Component } from "react";
-import Header from "../components/Header";
-import SideBar from "../components/SideBar";
-import Content from "../components/Content";
-import { findByLabelText } from "@testing-library/react";
+import ToolBar from "../components/Toolbar/ToolBar";
+import SideBar from "../components/Sidebar/SideBar";
+import Content from "../components/Content/Content";
+import './main.css'
 const { ipcRenderer } = window.require("electron");
 
 
-const mystyle = {
-  background: "blue",
-  display: "flex",
-  height: "100%",
-  width: "100px",
-  padding: "0",
-};
-
+// function Home () {
+//    return (
+//       <h1>Home</h1>
+//    )
+// }
+// function GNS () {
+//    return (
+//       <h1>GNS 5.1</h1>
+//    )
+// }
 
 
 class mainWindow extends Component {
@@ -21,6 +23,7 @@ class mainWindow extends Component {
 
    constructor(props) {
       super(props);
+      
       ipcRenderer.on("receiveArtikelData", (e, parts) => {
          this.setState({ parts: parts });
       });
@@ -38,8 +41,8 @@ class mainWindow extends Component {
    render() {
       return (
          <React.Fragment>
-            <Header />
-            <div id="wrapper" style={mystyle}>
+           <ToolBar />
+            <div className="main_wrapper">
                <SideBar />
                <Content />
             </div>
