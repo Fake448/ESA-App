@@ -16,7 +16,7 @@ const devPath = "http://localhost:3000?";
 function createMainWindow() {
 
    MainWindow = new BrowserWindow({
-      width: 800,
+      width: 1200,
       height: 1000,
       webPreferences: {
          nodeIntegration: true
@@ -29,7 +29,9 @@ function createMainWindow() {
          : `file://${path.join(__dirname, "../build/index.html?viewMain")}`)
 
    // 	DEV 	Extras
-   MainWindow.webContents.openDevTools();
+   if (isDev){
+      MainWindow.webContents.openDevTools();
+   }
 
    // const {
    //    default: installExtension,
