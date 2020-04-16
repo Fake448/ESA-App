@@ -2,19 +2,18 @@ import React from "react";
 const { ipcRenderer } = window.require("electron");
 
 export default class Content extends React.Component {
+   state = {};
+
    constructor(props) {
       super(props);
-      this.state = {
-         test: 12345,
-      };
       ipcRenderer.on("receiveArtikelData", (e, parts) => {
          this.setState({
-            parts: parts,
+            parts: parts
          });
       });
    }
 
-   handleClick = (e) => {
+   handleClick = e => {
       ipcRenderer.send("part:clicked", e.currentTarget.id);
    };
 
@@ -25,7 +24,7 @@ export default class Content extends React.Component {
                <h4> Parts: </h4>
                <ul className="parts">
                   {this.state.parts
-                     ? this.state.parts.map((part) => (
+                     ? this.state.parts.map(part => (
                           <li key={part["name"]}>
                              <button
                                 onClick={this.handleClick}
@@ -36,7 +35,7 @@ export default class Content extends React.Component {
                              <p
                                 style={{
                                    paddingLeft: "10px",
-                                   display: "inline-block",
+                                   display: "inline-block"
                                 }}
                              >
                                 {part["name"]}

@@ -18,7 +18,7 @@ class artikelWindow extends Component{
     render(){
         console.log(this.state)
         return(
-            <h1>World test</h1>
+            <h1>Artikel-Fenster</h1>
         );
     }
 }

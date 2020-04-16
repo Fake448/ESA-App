@@ -2,19 +2,20 @@ const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
 
-// const fs = require("fs");
+const fs = require("fs");
 
 let MainWindow;
-// let ArtikelWindow;
-// let currentID;
+let ArtikelWindow;
+let TestWindow;
+
+let currentID;
 
 //  Setup     DEVELOP - Environment
 const devPath = "http://localhost:3000?";
-// const prodPath = `file://${path.join(__dirname, "../build/index.html?")}`; // REACT-Entry
+const prodPath = `file://${path.join(__dirname, "../build/index.html?")}`; // REACT-Entry
 
 //  creating MAIN-Window
 function createMainWindow() {
-
    MainWindow = new BrowserWindow({
       width: 1200,
       height: 1000,
@@ -26,53 +27,54 @@ function createMainWindow() {
    MainWindow.loadURL(
       isDev
          ? devPath + "viewMain"
-         : `file://${path.join(__dirname, "../build/index.html?viewMain")}`)
+         : `file://${path.join(__dirname, "../build/index.html?viewMain")}`
+   );
 
    // 	DEV 	Extras
-   if (isDev){
+   if (isDev) {
       MainWindow.webContents.openDevTools();
    }
 
-   // const {
-   //    default: installExtension,
-   //    REACT_DEVELOPER_TOOLS
-   // } = require("electron-devtools-installer");
+   const {
+      default: installExtension,
+      REACT_DEVELOPER_TOOLS
+   } = require("electron-devtools-installer");
 
-   // installExtension(REACT_DEVELOPER_TOOLS)
-   //    .then(name => {
-   //       console.log("added Extension: REACT_DEVELOPER_TOOLS");
-   //    })
-   //    .catch(err => {
-   //       console.log(err);
-   //    });
+   installExtension(REACT_DEVELOPER_TOOLS)
+      .then(name => {
+         console.log("added Extension: REACT_DEVELOPER_TOOLS");
+      })
+      .catch(err => {
+         console.log(err);
+      });
 }
 
 ipcMain.on("mainWindow:loaded", () => {
-   // const TmpDB = [
-   //    {
-   //       name: "DDDDDDDDDDDDDDDDDDDDDDDD",
-   //       id: 1
-   //    },
-   //    {
-   //       name: "fdfsd",
-   //       id: 2
-   //    }
-   // ];
+   const TmpDB = [
+      {
+         name: "DDDDDDDDDDDDDDDDDDDDDDDD",
+         id: 1
+      },
+      {
+         name: "fdfsd",
+         id: 2
+      }
+   ];
 
-      // fs.readFile(__dirname + "../data/data.json", function(err, data) {
-      //    if (err) throw err;
-      //    const database = JSON.parse(data.toString());
-      //    let mydata = [];
-      //    database["Parts"].forEach((mypart, i) => {
-      //       mydata.push({
-      //          name: mypart["Name"] + " " + mypart["ArtNumber"],
-      //          id: i,
-      //       });
-      //    });
+   // fs.readFile(__dirname + "../data/data.json", function(err, data) {
+   //    if (err) throw err;
+   //    const database = JSON.parse(data.toString());
+   //    let mydata = [];
+   //    database["Parts"].forEach((mypart, i) => {
+   //       mydata.push({
+   //          name: mypart["Name"] + " " + mypart["ArtNumber"],
+   //          id: i,
+   //       });
+   //    });
 
-      // });
-      // MainWindow.webContents.send("receiveArtikelData", TmpDB);
-   });
+   // });
+   MainWindow.webContents.send("receiveArtikelData", TmpDB);
+});
 
 // ipcMain.on("ArtikelWindow:loaded", () => {
 //    fs.readFile(__dirname + "/database.json", function(err, data) {
@@ -83,26 +85,45 @@ ipcMain.on("mainWindow:loaded", () => {
 //    });
 // });
 
-// ipcMain.on("part:clicked", (e, ID) => {
-//    currentID = ID;
-//    createArtikelWindow();
-// });
+ipcMain.on("part:clicked", (e, ID) => {
+   currentID = ID;
+   createArtikelWindow();
+   createTestlWindow();
+});
+
 
 //  creating ARTIKEL-Window
-// function createArtikelWindow() {
-//    ArtikelWindow = new BrowserWindow({
-//       width: 800,
-//       height: 600,
-//       webPreferences: {
-//          nodeIntegration: true
-//       }
-//    });
-//    ArtikelWindow.loadURL(
-//       isDev
-//          ? devPath + "viewArtikel"
-//          : `file://${path.join(__dirname, "../build/index.html?viewArtikel")}`
-//    );
-// }
+function createArtikelWindow() {
+   ArtikelWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+      webPreferences: {
+         nodeIntegration: true
+      }
+   });
+   ArtikelWindow.loadURL(
+      isDev
+         ? devPath + "viewArtikel"
+         : `file://${path.join(__dirname, "../build/index.html?viewArtikel")}`
+   );
+}
+
+//  creating TEST-Window
+function createTestlWindow() {
+   ArtikelWindow = new BrowserWindow({
+      width: 800,
+      height: 600,
+      webPreferences: {
+         nodeIntegration: true
+      }
+   });
+   ArtikelWindow.loadURL(
+      isDev
+         ? devPath + "viewTest"
+         : `file://${path.join(__dirname, "../build/index.html?viewTest")}`
+   );
+}
+
 
 // SETTINGS Electron-App
 app.whenReady().then(createMainWindow);
