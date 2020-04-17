@@ -1,10 +1,10 @@
 .toolbar {
-   width: 100%;
-   background: linear-gradient(to right bottom, #ffffff, #0081ff);
-   height: 25px;
-   margin: 0px;
-   display: flex;
-   border: none;
+   /* width: 100%; */
+   /* background: linear-gradient(to right bottom, #ffffff, #0081ff); */
+   /* height: 25px; */
+   /* margin: 0px; */
+   /* display: flex; */
+   /* border: none; */
 }
 
 .toolbar_list {
