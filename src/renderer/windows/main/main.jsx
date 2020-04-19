@@ -63,7 +63,8 @@ class mainWindow extends React.Component {
    }
 
    suchechanged(event) {
-      console.log(event.target.value);
+      event.preventDefault();
+ 
    }
 
    render() {
