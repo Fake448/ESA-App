@@ -1,5 +1,5 @@
 import React from "react";
-import ListSeriesParameter from '../utils/ListSeriesParameter'
+import ListSeriesParameter from "../utils/ListSeriesParameter";
 // const { ipcRenderer } = window.require("electron");
 
 class GIV extends React.Component {
@@ -103,20 +103,14 @@ class GIV extends React.Component {
             }
          ]
       };
-
    }
 
    render() {
       return (
          <React.Fragment>
             <div className="content">
-               <h3>Niederspannungs- Installationsverteiler GIV</h3>
+               <h2>Niederspannungs- Installationsverteiler GIV</h2>
                <ListSeriesParameter infos={this.state.infos} />
-                  {/* {this.state.infos.map(info => (
-                     <p key={info.name}>
-                        {info.name} : {info.value}
-                     </p>
-                  ))} */}
             </div>
          </React.Fragment>
       );
