@@ -1,18 +1,30 @@
 import React from "react";
 import "./SideBar.css";
-import { AccessAlarm, ThreeDRotation } from "@material-ui/icons";
+import { AccessAlarm, ThreeDRotation, Height } from "@material-ui/icons";
+
+const styles = {
+   color: "rgb(16, 46, 112)",
+   height: "50px"
+};
 
 export default class Sidebar extends React.Component {
    constructor(props) {
       super(props);
-      console.log("PROPS", props);
+      this.setState = {};
 
-      // this.setState(props)
-      this.state = {
-         //    props : (props)
-      };
+      if (props.links) {
+         props.links.map(link => console.log(link["name"], link["isActive"]));
+      }
+
+      this.navUpdate = this.navUpdate.bind(this);
    }
 
+   navUpdate(event) {
+      // this.setState(state => ({
+      //    isToggleOn: !state.isToggleOn
+      // }))
+      console.log("id: ", event.target.id);
+   }
    render() {
       return (
          <React.Fragment>
@@ -28,11 +40,16 @@ export default class Sidebar extends React.Component {
                   {this.props.links
                      ? this.props.links.map(link => (
                           <li key={link["name"]}>
-                             <button key={link.name}>
+                             <button
+                                id={link.name}
+                                key={link.name}
+                                style={styles}
+                                onClick={this.navUpdate}
+                             >
                                 {link.name}
-                                <span className="badge badge-secondary">
+                                {/* <span className="badge badge-secondary">
                                    New
-                                </span>
+                                </span> */}
                              </button>
                           </li>
                        ))
