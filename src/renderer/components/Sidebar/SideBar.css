@@ -1,7 +1,41 @@
 .sidebar {
    background: rgb(51, 133, 187);
    min-height: 100vh;
-   min-width: 150px;
+   min-width: 200px;
    padding: 0;
-   color: rgb(255, 255, 255);
+   margin: 0;
+   overflow-x: hidden;
+   transition: 0.5s;
+   
+   /* position: fixed; */
+}
+
+.sidebar_navlist {
+   display : flex;
+   flex-direction: column;
+   padding: 0;
+   list-style-type: none;
+   /* color: rgb(126, 152, 226); */
+}
+
+.sidebar button {
+   width: 100%;
+   font-size: 20px;
+   font-weight: bold;
+}
+
+.sidebar span {
+   font-size: 8px;
+   color: rgb(63, 199, 0);
+}
+
+.sidebar_logo {
+   width: 200px;
+   height: 200px;
+}
+
+.sidebar_logo img {
+   width: 200px;
+   height: 200px;
+   
 }
