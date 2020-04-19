@@ -5,8 +5,35 @@ class GNS extends React.Component {
    state = {};
    constructor(props) {
       super(props);
-      console.log("GNS-props", props);
-      console.log("GNS-state", this.state);
+      this.state = {
+         baureihe: [
+            {
+               name: "Leistungsschalter",
+               symbol: "LS"
+            },
+            {
+               name: "Modulplattentechnik",
+               symbol: ""
+            },
+            {
+               name:
+                  "Reihenschaltschrank für NH-Sicherungslasttrennschalter und Modulplatten in Festeinbauund Stecktechnik bis 630 A",
+               symbol: ""
+            },
+            {
+               name: "Motor Control Center",
+               symbol: "MCC"
+            },
+            {
+               name: "Reihenschaltschrank für senkrechte NH-Sicherungslastschaltleisten bis 1250 A",
+               symbol: "MCC"
+            },
+            {
+               name: "Blindleistungskompensation",
+               symbol: "MCC"
+            }
+         ]
+      };
 
       ipcRenderer.on("receiveArtikelData", (e, parts) => {
          this.setState({
