@@ -1,6 +1,7 @@
 .toolbar {
    width: 100%;
-   background: linear-gradient(to right bottom, #ffffff, #0081ff);
+   /* background: linear-gradient(to right bottom, #ffffff, #0081ff); */
+   background: rgb(51, 133, 187);
    height: 25px;
    margin: 0px;
    padding: 0;
