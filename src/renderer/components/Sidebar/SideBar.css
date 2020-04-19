@@ -1,5 +1,6 @@
 .sidebar {
-   background: rgb(51, 133, 187);
+   /* background: rgb(51, 133, 187); */
+   background: linear-gradient(to right bottom, #b4ddff, #0081ff);
    min-height: 100vh;
    min-width: 200px;
    padding: 0;
@@ -22,6 +23,8 @@
    width: 100%;
    font-size: 20px;
    font-weight: bold;
+   text-align: left;
+   /* background-color: blueviolet; */
 }
 
 .sidebar span {
@@ -37,5 +40,4 @@
 .sidebar_logo img {
    width: 200px;
    height: 200px;
-   
 }
