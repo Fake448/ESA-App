@@ -6,15 +6,8 @@ class Toolbar extends React.Component {
    render() {
       return (
          <React.Fragment>
-            <div className="navbar nav_title">
-               <div className="toolbar_logo">
-                  <img
-                     src={process.env.PUBLIC_URL + "/img/logo/icon.png"}
-                     alt="error"
-                     style={{ width: 100 }}
-                  ></img>
-               </div>
-               {/* <div className="profile">
+            <div className="toolbar">
+                 {/* <div className="profile">
                   <div className="profile_pic"></div>
                </div> */}
                <ul className="toolbar_list">
