@@ -5,8 +5,6 @@ class Home extends React.Component {
    state = {};
    constructor(props) {
       super(props);
-      console.log("Elektrant-props", props);
-      console.log("Elektrant-state", this.state);
       };
    
    render() {
