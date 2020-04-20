@@ -6,8 +6,9 @@ class artikelWindow extends Component{
 
     constructor(props){
         super(props);
-        ipcRenderer.on('receiveStudentInfo', (e, student) => {
-            this.setState({student: student})
+        
+        ipcRenderer.on('sendingArtikelinfo', (e, part) => {
+            this.setState({part: part})
         });
     }
 
@@ -16,7 +17,7 @@ class artikelWindow extends Component{
     }
 
     render(){
-        console.log(this.state)
+        console.log("props: ", this.props, this.state)
         return(
             <h1>Artikel-Fenster</h1>
         );
