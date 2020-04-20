@@ -21,6 +21,21 @@ class mainWindow extends React.Component {
           isActive: true
         },
         {
+          name: "ATM - Automobile",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "BAN - Bahn",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "ELK - Elektrant",
+          component: <Elektrant />,
+          isActive: false
+        },
+        {
           name: "GNS",
           component: <GNS />,
           isActive: false
@@ -31,12 +46,37 @@ class mainWindow extends React.Component {
           isActive: false
         },
         {
-          name: "Elektrant",
-          component: <Elektrant />,
+          name: "MS - Mittelspannung",
+          // component: <Automobile />,
           isActive: false
         },
         {
-          name: "Automobile",
+          name: "RIT - Rittal",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "SIV - Sivacon",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "SNV",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "TAB - Tableau",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "TRS - Trafoschrank",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "TRL - TriLine",
           // component: <Automobile />,
           isActive: false
         },
