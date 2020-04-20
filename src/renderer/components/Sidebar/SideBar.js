@@ -13,7 +13,7 @@ export default class Sidebar extends React.Component {
       this.setState = {};
 
       if (props.links) {
-         props.links.map(link => console.log(link["name"], link["isActive"]));
+         // props.links.map(link => console.log(link["name"], link["isActive"]));
       }
 
       this.navUpdate = this.navUpdate.bind(this);
@@ -23,7 +23,7 @@ export default class Sidebar extends React.Component {
       // this.setState(state => ({
       //    isToggleOn: !state.isToggleOn
       // }))
-      console.log("button-id: ", event.target.id);
+      // console.log("button-id: ", event.target.id);
    }
    render() {
       return (
