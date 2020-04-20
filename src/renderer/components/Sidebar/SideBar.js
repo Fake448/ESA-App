@@ -4,7 +4,7 @@ import "./SideBar.css";
 
 const styles = {
    color: "rgb(16, 46, 112)",
-   height: "50px"
+   height: "30px"
 };
 
 export default class Sidebar extends React.Component {
