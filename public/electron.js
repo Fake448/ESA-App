@@ -1,7 +1,6 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
-
 const fs = require("fs");
 
 let MainWindow;
@@ -50,47 +49,36 @@ function createMainWindow() {
 }
 
 ipcMain.on("mainWindow:loaded", () => {
-   const TmpDB = [
-      {
-         name: "DDDDDDDDDDDDDDDDDDDDDDDD",
-         id: 1
-      },
-      {
-         name: "fdfsd",
-         id: 2
-      }
-   ];
-
-   // fs.readFile(__dirname + "../data/data.json", function(err, data) {
-   //    if (err) throw err;
-   //    const database = JSON.parse(data.toString());
-   //    let mydata = [];
-   //    database["Parts"].forEach((mypart, i) => {
-   //       mydata.push({
-   //          name: mypart["Name"] + " " + mypart["ArtNumber"],
-   //          id: i,
-   //       });
-   //    });
-
-   // });
-   MainWindow.webContents.send("receiveArtikelData", TmpDB);
+   fs.readFile(process.cwd() + "/data/database.json", function(err, data) {
+      if (err) throw err;
+      const database = JSON.parse(data.toString());
+      let mydata = [];
+      database["Parts"].forEach((mypart, i) => {
+         mydata.push({
+            name: mypart["Name"] + " " + mypart["ArtNumber"],
+            id: i
+         });
+      });
+      MainWindow.webContents.send("receiveArtikelData", mydata);
+   });
 });
 
-// ipcMain.on("ArtikelWindow:loaded", () => {
-//    fs.readFile(__dirname + "/database.json", function(err, data) {
-//       if (err) throw err;
-//       const studentInfo = JSON.parse(data.toString());
-//       let part = studentInfo["Parts"][currentID];
-//       ArtikelWindow.webContents.send("receiveStudentInfo", part);
-//    });
-// });
+ipcMain.on("ArtikelWindow:loaded", () => {
+   fs.readFile(process.cwd() + "/data/database.json", function(err, data) {
+      if (err) throw err;
+      const artikelinfo = JSON.parse(data.toString());
+      let part = artikelinfo["Parts"][currentID];
+      console.log(part);
+      
+      ArtikelWindow.webContents.send("sendingArtikelinfo", part);
+   });
+});
 
 ipcMain.on("part:clicked", (e, ID) => {
    currentID = ID;
    createArtikelWindow();
-   createTestlWindow();
+   // createTestlWindow();
 });
-
 
 //  creating ARTIKEL-Window
 function createArtikelWindow() {
@@ -123,7 +111,6 @@ function createTestlWindow() {
          : `file://${path.join(__dirname, "../build/index.html?viewTest")}`
    );
 }
-
 
 // SETTINGS Electron-App
 app.whenReady().then(createMainWindow);
