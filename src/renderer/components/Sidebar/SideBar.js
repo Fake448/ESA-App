@@ -1,6 +1,6 @@
 import React from "react";
 import "./SideBar.css";
-import { AccessAlarm, ThreeDRotation, Height } from "@material-ui/icons";
+// import { AccessAlarm, ThreeDRotation, Height } from "@material-ui/icons";
 
 const styles = {
    color: "rgb(16, 46, 112)",
@@ -23,7 +23,7 @@ export default class Sidebar extends React.Component {
       // this.setState(state => ({
       //    isToggleOn: !state.isToggleOn
       // }))
-      console.log("id: ", event.target.id);
+      console.log("button-id: ", event.target.id);
    }
    render() {
       return (
