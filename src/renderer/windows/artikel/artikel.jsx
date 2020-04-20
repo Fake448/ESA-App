@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import page404 from "../../../";
 const { ipcRenderer } = window.require("electron");
 
 console.log(process.cwd());
