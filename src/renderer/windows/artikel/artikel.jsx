@@ -17,7 +17,6 @@ class artikelWindow extends Component {
    }
 
    render() {
-      console.log("props: ", this.props, this.state);
       return (
          <React.Fragment>
             <h1>Artikel-Fenster</h1>
