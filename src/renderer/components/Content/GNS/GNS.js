@@ -25,7 +25,8 @@ class GNS extends React.Component {
                symbol: "MCC"
             },
             {
-               name: "Reihenschaltschrank für senkrechte NH-Sicherungslastschaltleisten bis 1250 A",
+               name:
+                  "Reihenschaltschrank für senkrechte NH-Sicherungslastschaltleisten bis 1250 A",
                symbol: "MCC"
             },
             {
@@ -68,7 +69,8 @@ class GNS extends React.Component {
             },
             {
                name: "Innere Unterteilung",
-               value: "Gerüstrahmen – Alu-Zink beschichtet Innere Unterteilung – Alu-Zink beschichtet Umhüllung – Pulverbeschichtet RAL 7035 (Standard)"
+               value:
+                  "Gerüstrahmen – Alu-Zink beschichtet Innere Unterteilung – Alu-Zink beschichtet Umhüllung – Pulverbeschichtet RAL 7035 (Standard)"
             },
             {
                name: "Rastergrundmaß",
@@ -93,7 +95,7 @@ class GNS extends React.Component {
             {
                name: "",
                value: ""
-            },
+            }
          ]
       };
 
@@ -113,10 +115,10 @@ class GNS extends React.Component {
             <div className="content">
                <h1>GNS (ver. 5.1)</h1>
                <img
-                     src={process.env.PUBLIC_URL + "/img/GNS/GNS-komplett.png"}
-                     alt="error"
-                     width="400"
-                  ></img>
+                  src={process.env.PUBLIC_URL + "/img/GNS/GNS-komplett.png"}
+                  alt="error"
+                  width="400"
+               ></img>
                <h4> Parts: </h4>
                <ul className="parts">
                   {this.state.parts
