@@ -69,7 +69,6 @@ ipcMain.on("ArtikelWindow:loaded", () => {
       const artikelinfo = JSON.parse(data.toString());
       let part = artikelinfo["Parts"][currentID];
       console.log(part);
-      
       ArtikelWindow.webContents.send("sendingArtikelinfo", part);
    });
 });
@@ -95,7 +94,6 @@ function createArtikelWindow() {
          : `file://${path.join(__dirname, "../build/index.html?viewArtikel")}`
    );
 }
-
 //  creating TEST-Window
 function createTestlWindow() {
    ArtikelWindow = new BrowserWindow({
