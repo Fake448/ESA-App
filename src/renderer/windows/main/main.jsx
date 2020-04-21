@@ -10,148 +10,151 @@ import "./main.css";
 const { ipcRenderer } = window.require("electron");
 
 class mainWindow extends React.Component {
-   constructor(props) {
-      super(props);
+  constructor(props) {
+    super();
+    this.updateNav = this.updateNav.bind(this);
 
-      this.state = {
-         mainContent: [
-            {
-               name: "Home",
-               component: <Home />,
-               isActive: true
-            },
-            {
-               name: "ATM - Automobile",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "BAN - Bahn",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "ELK - Elektrant",
-               component: <Elektrant />,
-               isActive: false
-            },
-            {
-               name: "GNS",
-               component: <GNS />,
-               isActive: false
-            },
-            {
-               name: "GIV",
-               component: <GIV />,
-               isActive: false
-            },
-            {
-               name: "MS - Mittelspannung",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "RIT - Rittal",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "SIV - Sivacon",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "SNV",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "TAB - Tableau",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "TRS - Trafoschrank",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "TRL - TriLine",
-               // component: <Automobile />,
-               isActive: false
-            },
-            {
-               name: "Test",
-               // component: <Test />,
-               isActive: false
-            }
-         ]
-      };
+    this.state = {
+      mainContent: [
+        {
+          name: "Home",
+          component: <Home />,
+          isActive: false
+        },
+        {
+          name: "ATM - Automobile",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "BAN - Bahn",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "ELK - Elektrant",
+          component: <Elektrant />,
+          isActive: false
+        },
+        {
+          name: "GNS",
+          component: <GNS />,
+          isActive: true
+        },
+        {
+          name: "GIV",
+          component: <GIV />,
+          isActive: true
+        },
+        {
+          name: "MS - Mittelspannung",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "RIT - Rittal",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "SIV - Sivacon",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "SNV",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "TAB - Tableau",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "TRS - Trafoschrank",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "TRL - TriLine",
+          // component: <Automobile />,
+          isActive: false
+        },
+        {
+          name: "Test",
+          // component: <Test />,
+          isActive: false
+        }
+      ]
+    };
 
-      ipcRenderer.on("receiveArtikelData", (e, artikel) => {
-         this.setState({ artikel: artikel });
-      });
-   }
+    ipcRenderer.on("receiveArtikelData", (e, artikel) => {
+      this.setState({ artikel: artikel });
+    });
+  }
 
-   componentDidMount() {
-      ipcRenderer.send("mainWindow:loaded");
-   }
+  componentDidMount() {
+    ipcRenderer.send("mainWindow:loaded");
+  }
 
-   formSubmitted(event) {
-      event.preventDefault();
-      console.log(event);
-   }
+  formSubmitted(event) {
+    event.preventDefault();
+    console.log(event);
+  }
 
-   suchechanged(event) {
-      event.preventDefault();
-   }
+  suchechanged(event) {
+    event.preventDefault();
+  }
 
-   createContent() {
-      for (let i = 0; i < this.state.mainContent.length; i++) {
-         const element = this.state.mainContent[i];
-         console.log(
-            this.state.mainContent[i].name,
-            ": ",
-            this.state.mainContent[i].isActive
-         );
+  createSuche() {
+    return (
+      <form onSubmit={this.formSubmitted}>
+        <input
+          onChange={this.suchechanged}
+          id="sucheInput"
+          name="sucheInput"
+        ></input>
+        <button type="submit">suche</button>
+      </form>
+    );
+  }
+
+  updateNav(event) {
+    // event.preventDefault();
+    // console.log("updating Nav", event);
+  }
+
+ createContent() {
+    //  TODO  warum wird Funktion 2x ausgeführt???
+    for (let i = 0; i < this.state.mainContent.length; i++) {
+      if (this.state.mainContent[i].isActive) {
+        return (
+          <div
+            key={this.state.mainContent[i].name}
+            id={this.state.mainContent[i].name}>
+            {this.state.mainContent[i].component}
+          </div>
+        );
       }
+    }
+  }
 
-      return this.state.mainContent.map(content => (
-         <div key={content["name"]}>
-            {content["name"]}
-            {this.content}
-            {content.component}
-            {/* {console.log("test: ", content)} */}
-            test
-         </div>
-      ));
-   }
-
-   createSuche() {
-      return (
-         <form onSubmit={this.formSubmitted}>
-            <input
-               onChange={this.suchechanged}
-               id="sucheInput"
-               name="sucheInput"
-            ></input>
-            <button type="submit">suche</button>
-         </form>
-      );
-   }
-
-   render() {
-      return (
-         <React.Fragment>
-            <ToolBar />
-            <div className="content_wrapper">
-               <SideBar links={this.state.mainContent} />
-               <div className="content">{this.createContent()}</div>
-               {this.createSuche()}
-            </div>
-         </React.Fragment>
-      );
-   }
+  render() {
+    return (
+      <React.Fragment>
+        <ToolBar />
+        <div className="content_wrapper">
+          <SideBar links={this.state.mainContent} updateNav={this.updateNav} />
+          <div className="content">
+            {this.createContent()}
+          <GIV />
+          </div>
+          {this.createSuche()}
+        </div>
+      </React.Fragment>
+    );
+  }
 }
 
 export default mainWindow;
