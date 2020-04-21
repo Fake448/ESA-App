@@ -120,9 +120,20 @@ class mainWindow extends React.Component {
     );
   }
 
-  updateNav(event) {
-    // event.preventDefault();
-    // console.log("updating Nav", event);
+  updateNav= (event) => {
+    event.preventDefault();
+    for (let i=0; i < this.state.mainContent.length; i++) {
+      if (event.target.id === this.state.mainContent[i].name) {
+        console.log(event.target.id)
+        this.setState = {
+          
+        }
+      }
+    }
+
+    this.setState = {
+
+    }
   }
 
  createContent() {
@@ -147,10 +158,9 @@ class mainWindow extends React.Component {
         <div className="content_wrapper">
           <SideBar links={this.state.mainContent} updateNav={this.updateNav} />
           <div className="content">
-            {this.createContent()}
-          <GIV />
-          </div>
           {this.createSuche()}
+            {this.createContent()}
+          </div>
         </div>
       </React.Fragment>
     );
