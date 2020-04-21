@@ -63,15 +63,6 @@ ipcMain.on("mainWindow:loaded", () => {
    });
 });
 
-ipcMain.on("ArtikelWindow:loaded", () => {
-   fs.readFile(process.cwd() + "/data/database.json", function(err, data) {
-      if (err) throw err;
-      const artikelinfo = JSON.parse(data.toString());
-      let part = artikelinfo["Parts"][currentID];
-      console.log(part);
-      ArtikelWindow.webContents.send("sendingArtikelinfo", part);
-   });
-});
 
 ipcMain.on("part:clicked", (e, ID) => {
    currentID = ID;
@@ -94,6 +85,17 @@ function createArtikelWindow() {
          : `file://${path.join(__dirname, "../build/index.html?viewArtikel")}`
    );
 }
+
+ipcMain.on("ArtikelWindow:loaded", () => {
+   fs.readFile(process.cwd() + "/data/database.json", function(err, data) {
+      if (err) throw err;
+      const artikelinfo = JSON.parse(data.toString());
+      let part = artikelinfo["Parts"][currentID];
+      console.log(part);
+      ArtikelWindow.webContents.send("sendingArtikelinfo", part);
+   });
+});
+
 //  creating TEST-Window
 function createTestlWindow() {
    ArtikelWindow = new BrowserWindow({
