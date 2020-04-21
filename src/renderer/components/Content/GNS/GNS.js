@@ -100,6 +100,8 @@ class GNS extends React.Component {
       };
 
       ipcRenderer.on("receiveArtikelData", (e, parts) => {
+         console.log("data received");
+         
          this.setState({
             parts: parts
          });
