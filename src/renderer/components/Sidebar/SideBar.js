@@ -32,7 +32,7 @@ export default class Sidebar extends React.Component {
                       id={link.name}
                       key={link.name}
                       style={styles}
-                      onClick={this.props.updateNav()}
+                      onClick={this.props.updateNav}
                      //  onClick={console.log("click")}
                     >
                       {link.name}
