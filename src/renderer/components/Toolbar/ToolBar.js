@@ -1,3 +1,6 @@
+// TODO: Toolbar
+//    Uhrzeit, eine globale Suche, dropdown-menüs?, etc..
+
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ToolBar.css";

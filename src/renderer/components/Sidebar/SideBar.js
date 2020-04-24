@@ -1,3 +1,14 @@
+//TODO: SideBar
+//  Sidebar soll definitiv besser aussehen als bisher
+
+//    Ziel:  https://colorlib.com/polygon/gentelella/
+//              free!, auch auf github verfügbar
+//           https://colorlibhq.github.io/gentelella/
+
+//    Profile sollten erstmal vernachlässigt werden,
+//    höchstens: admin/user(versteckt)
+//    dark/light switch wäre gut
+
 import React from "react";
 import "./SideBar.css";
 // import { AccessAlarm, ThreeDRotation, Height } from "@material-ui/icons";

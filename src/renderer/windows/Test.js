@@ -1,16 +1,15 @@
-import React, { Component } from 'react';
+// Test-view für Testzwecke in einem seperatem window
+//  feel free!!!
 
-const { ipcRenderer } = window.require('electron');
+import React, { Component } from "react";
 
-class Test extends Component{
+const { ipcRenderer } = window.require("electron");
 
-
-    render(){
-        console.log(this.state)
-        return(
-            <h1>Test</h1>
-        );
-    }
+class Test extends Component {
+   render() {
+      console.log(this.state);
+      return <h1>Test</h1>;
+   }
 }
 
 export default Test;

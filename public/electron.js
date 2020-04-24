@@ -1,3 +1,8 @@
+//    APP-INIT
+
+// TODO: views.json
+//    alle Setup-Angaben der "Window´s" in "views.json" auslagern
+
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
@@ -48,6 +53,9 @@ function createMainWindow() {
       });
 }
 
+//    FIXME: mainwindow webcontent
+//       "data" sollte von der main.js verwaltet werden
+//       oder REDUX store
 ipcMain.on("mainWindow:loaded", () => {
    fs.readFile(process.cwd() + "/data/database.json", function(err, data) {
       if (err) throw err;
@@ -63,11 +71,20 @@ ipcMain.on("mainWindow:loaded", () => {
    });
 });
 
-
 ipcMain.on("part:clicked", (e, ID) => {
    currentID = ID;
    createArtikelWindow();
    // createTestlWindow();
+});
+
+ipcMain.on("ArtikelWindow:loaded", () => {
+   fs.readFile(process.cwd() + "/data/database.json", function(err, data) {
+      if (err) throw err;
+      const artikelinfo = JSON.parse(data.toString());
+      let part = artikelinfo["Parts"][currentID];
+      console.log(part);
+      ArtikelWindow.webContents.send("sendingArtikelinfo", part);
+   });
 });
 
 //  creating ARTIKEL-Window
@@ -85,16 +102,6 @@ function createArtikelWindow() {
          : `file://${path.join(__dirname, "../build/index.html?viewArtikel")}`
    );
 }
-
-ipcMain.on("ArtikelWindow:loaded", () => {
-   fs.readFile(process.cwd() + "/data/database.json", function(err, data) {
-      if (err) throw err;
-      const artikelinfo = JSON.parse(data.toString());
-      let part = artikelinfo["Parts"][currentID];
-      console.log(part);
-      ArtikelWindow.webContents.send("sendingArtikelinfo", part);
-   });
-});
 
 //  creating TEST-Window
 function createTestlWindow() {
@@ -128,36 +135,8 @@ app.on("activate", () => {
 });
 
 app.on("ready", () => {
-   console.log("App ready   -   ESA-Tool is loading");
+   // TODO: electron-logger einrichten
+   // evtl besseres "aktives loggen" durch Package-unterstützung
+   //    .log datei sinnvoll
+   console.log("App ready - ESA-Tool is loading");
 });
-
-//		HELPER functions
-// function getDataBase() {
-//    // Dies gibt alle Dateien die sich in Ihrem Root-Verzeichnis,
-//    // befinden aus, '/' oder 'C:\'.
-//    // const root = fs.readdirSync('/Games')
-//    // console.log(root)
-
-//    const files = require("fs");
-
-//    var myDB = [];
-
-//    files.readFile(__dirname + "/data/database.json", function(err, data) {
-//       if (err) throw err;
-//       const database = JSON.parse(data.toString());
-//       database["Parts"].forEach((mypart, i) => {
-//          myDB.push({
-//             name: mypart["Name"],
-//             ArtNr: mypart["ArtNumber"],
-//             id: i
-//          });
-//       });
-//       this.DB = myDB;
-//    });
-
-//    // console.log(this.DB);
-//    // console.log(DB);
-
-//    console.log(myDB);
-//    return myDB;
-// }
