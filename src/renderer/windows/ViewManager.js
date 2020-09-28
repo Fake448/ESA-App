@@ -4,7 +4,7 @@
 //     über eine "index.html" laufen)
 
 // TODO: "View-Array"
-//    -für smögliche spätere Verwaltung
+//    -für mögliche spätere Verwaltung
 //    entweder:   aus Ordner erstellen (dynamic)
 //                in .json auslagern
 
@@ -14,12 +14,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./main/main";
 import Artikel from "./artikel/artikel";
 import Test from "./Test";
+import GNSSetup from "./GNS/GNS_setup";
 
 class ViewManager extends Component {
    static Views() {
       return {
          viewMain: <Main />,
          viewArtikel: <Artikel />,
+         viewGNSSetup: <GNSSetup />,
          viewTest: <Test />
       };
    }

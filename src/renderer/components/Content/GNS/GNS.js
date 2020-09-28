@@ -1,5 +1,5 @@
 import React from "react";
-const { ipcRenderer } = window.require("electron");
+const { ipcRenderer, ipcMain } = window.require("electron");
 
 class GNS extends React.Component {
    state = {};
@@ -110,6 +110,11 @@ class GNS extends React.Component {
    handleClick = e => {
       ipcRenderer.send("part:clicked", e.currentTarget.id);
    };
+   openBG_Config = e => {
+      ipcRenderer.send("openBG_Config");
+      console.log("Konfiguration öffnen");
+   }
+   
 
    render() {
       return (
@@ -144,6 +149,8 @@ class GNS extends React.Component {
                        ))
                      : null}
                </ul>
+               <button 
+                  onClick={this.openBG_Config}>Baugruppenkonfigurator</button>
             </div>
          </React.Fragment>
       );
