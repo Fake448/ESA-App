@@ -3,8 +3,10 @@ const { ipcRenderer } = window.require("electron");
 
 console.log(process.cwd());
 
-class artikelWindow extends Component {
-  
+
+
+class GNSSetupWindow extends Component {
+
   render() {
     return (
       <React.Fragment>
@@ -15,4 +17,4 @@ class artikelWindow extends Component {
 }
 // }
 
-export default artikelWindow;
+export default GNSSetupWindow;
