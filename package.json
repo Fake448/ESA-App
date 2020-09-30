@@ -59,5 +59,6 @@
     "electron-builder": "^22.8.1",
     "electron-devtools-installer": "^2.2.4",
     "wait-on": "^4.0.2"
-  }
+  },
+  "type": "module"
 }
