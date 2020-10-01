@@ -11,7 +11,10 @@ const { log } = require("console");
 
 const WinManager = require('./winmanager.js')
 
-console.log(WinManager.test);
+
+
+
+
 
 let MainWindow;
 let ArtikelWindow;
@@ -164,7 +167,10 @@ function createTestlWindow() {
 }
 
 // SETTINGS Electron-App
-app.whenReady().then(createMainWindow);
+// app.whenReady().then(createMainWindow);
+app.whenReady().then(WinManager.createWindow("Main"));
+
+
 
 app.on("window-all-closed", () => {
    if (process.platform !== "darwin") {
