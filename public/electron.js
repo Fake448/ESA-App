@@ -6,6 +6,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 const isDev = require("electron-is-dev");
+const windowManager = require('electron-window-manager');
 const fs = require("fs");
 const { log } = require("console");
 
@@ -168,7 +169,7 @@ function createTestlWindow() {
 
 // SETTINGS Electron-App
 // app.whenReady().then(createMainWindow);
-app.whenReady().then(WinManager.createWindow("Main"));
+// app.whenReady().then(WinManager.createWindow("Main"));
 
 
 
@@ -188,5 +189,11 @@ app.on("ready", () => {
    // TODO: electron-logger einrichten
    // evtl besseres "aktives loggen" durch Package-unterstützung
    //    .log datei sinnvoll
+   windowManager.init()
+   windowManager.setDefaultSetup({'width': 200, 'height': 450})
+
+   windowManager.open('home', 'Welcome', '/home.html')
+   
+   
    console.log("App ready");
 });

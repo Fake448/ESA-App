@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^7.2.1",
     "cross-env": "^7.0.0",
     "electron-is-dev": "^1.2.0",
+    "electron-window-manager": "^1.0.6",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-helmet": "^5.2.1",
