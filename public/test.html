@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Typschlüssel Komplettfelder</title>
+  </head>
+
+  <body>
+    <h1>Typschlüssel Komplettfelder</h1>
+    <br />
+
+    <table>
+      <tr>
+        <td>System</td>
+        <td><select id="selector_system"></select></td>
+      </tr>
+      <tr>
+        <td>Produktebene</td>
+        <td><select id="selector_kategorie"></select></td>
+      </tr>
+      <tr>
+        <td>Feldtyp</td>
+        <td><select id="selector_feldtyp"></select></td>
+      </tr>
+      <tr>
+          <td>Baureihe</td>
+          <td><select id="selector_baureihe"></select></td>
+        </tr>
+    </table>
+
+    <script>
+      const System = [
+        {
+          Name: "Grimmaer Niederspannung 3.1",
+          Abk: "G31",
+        },
+        {
+          Name: "Grimmaer Niederspannung 5.1",
+          Abk: "G51",
+        },
+      ];
+
+      const Produktebene = [
+        {
+          Name: "Typfeld",
+          Abk: "TF",
+        },
+        {
+          Name: "Kalkulationsfeld",
+          Abk: "KF",
+        },
+      ];
+
+      const Feldtyp = [
+        {
+          Name: "Leistungsschalter",
+          Abk: "LS",
+          Baureihe: [
+            {
+              Name: "Emax2 E1.2",
+              Abk: "E12",
+            },
+            {
+              Name: "Emax2 E2.2",
+              Abk: "E22",
+            },
+            {
+              Name: "Emax2 E4.2",
+              Abk: "E42",
+            },
+            {
+              Name: "Emax2 E6.2",
+              Abk: "E62",
+            },
+            {
+              Name: "Tmax T4",
+              Abk: "T4",
+            },
+            {
+              Name: "Tmax T5",
+              Abk: "T5",
+            },
+            {
+              Name: "Tmax T6",
+              Abk: "T6",
+            },
+            {
+              Name: "Tmax T7",
+              Abk: "T7",
+            },
+          ],
+        },
+        {
+          Name: "Sprungschaltleisten",
+          Abk: "SLw",
+          Baureihe: [
+            {
+              Name: "ABB",
+              Abk: "ABB",
+            },
+            {
+              Name: "Jean-Müller",
+              Abk: "JM",
+            },
+          ],
+        },
+        {
+          Name: "Sprungschaltleisten, senkrecht",
+          Abk: "SLs",
+        },
+        {
+          Name: "Modulplatten",
+          Abk: "MP",
+        },
+        {
+          Name: "Lastschaltleisten",
+          Abk: "LL",
+        },
+        {
+          Name: "Motor-Control-Center",
+          Abk: "MCC",
+        },
+        {
+          Name: "Gebaudeinstallationsverteiler",
+          Abk: "IV",
+        },
+        {
+          Name: "Eckfeld",
+          Abk: "EF",
+        },
+        {
+          Name: "Kompensationsfeld",
+          Abk: "KO",
+        },
+        {
+          Name: "Leerfeld",
+          Abk: "LF",
+        },
+      ];
+
+      console.log(System);
+      console.log(Kategorie);
+      console.log(Feldtyp);
+
+      System.forEach(function (item) {
+        var option = document.createElement("option");
+        option.value = item.Abk;
+        option.innerHTML = item.Name;
+        selector_system.appendChild(option);
+      });
+
+      Kategorie.forEach(function (item) {
+        var option = document.createElement("option");
+        option.value = item.Abk;
+        option.innerHTML = item.Name;
+        selector_kategorie.appendChild(option);
+      });
+
+      Feldtyp.forEach(function (item) {
+        var option = document.createElement("option");
+        option.value = item.Abk;
+        option.innerHTML = item.Name;
+        selector_feldtyp.appendChild(option);
+      });
+
+      // Baureihe forEach(function (item) {
+      //   var option = document.createElement("option");
+      //   option.value = item.Abk;
+      //   option.innerHTML = item.Name;
+      //   selector_baureihe.appendChild(option);
+      // });
+
+    </script>
+  </body>
+</html>
