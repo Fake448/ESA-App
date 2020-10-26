@@ -4,98 +4,108 @@
 // - https://dmitripavlutin.com/javascript-fetch-async-await/
 
 class dropdown {
-   constructor(elementID) {
-      this.data = this.getData();
-      this.element = elementID;
-   }
+  constructor(elementID) {
+   //  this.data = this.getData();
+   //  this.data = this.readData()
+    this.data = this.readData()
+    this.element = elementID;
 
-   init() {
-      this.createTable();
-   }
+  }
 
-   // readData();
-   getData() {
-      fetch("./data.json")
-         .then((response) => response.json())
-         .then((jsondata) => {
-            this.data = jsondata;
-            console.log("getData :", this.data);
-         });
-   }
+  init() {
+    this.createTable();
+  }
 
-   createTable() {
-      var table = document.createElement("table");
-      var tbody = document.createElement("tbody");
+  // readData();
+  getData() {
+    fetch("./data.json")
+      .then((response) => response.json())
+      .then((jsondata) => {
+        this.data = jsondata;
+        console.log("getData :", this.data);
+      });
+  }
 
-      // adding System
-      this.addRow(tbody, "System");
-      this.addRow(tbody, "sfdsd");
+  async readData() {
+    const response = await fetch("./data.json");
+    const d = await response.json()
+    this.testData = d
+   //  return d
+  }
 
-      console.log("here", this.data);
+  createTable() {
+    var table = document.createElement("table");
+    var tbody = document.createElement("tbody");
 
-      table.appendChild(tbody);
-      document.getElementById(this.element).appendChild(table);
-   }
+    // adding System
+    this.addRow(tbody, "System");
+    this.addRow(tbody, "sfdsd");
 
-   addRow(table_body, name) {
-      var tableRow = document.createElement("tr");
-      var td_name = document.createElement("td");
-      var td_dropdown = document.createElement("td");
+    console.log("here", this.data);
 
-      // rowName
-      td_name.innerHTML = name;
+    table.appendChild(tbody);
+    document.getElementById(this.element).appendChild(table);
+  }
 
-      // rowDropdown
-      this.addDropdown(td_dropdown, name);
+  addRow(table_body, name) {
+    var tableRow = document.createElement("tr");
+    var td_name = document.createElement("td");
+    var td_dropdown = document.createElement("td");
 
-      tableRow.appendChild(td_name);
-      tableRow.appendChild(td_dropdown);
-      table_body.appendChild(tableRow);
-   }
+    // rowName
+    td_name.innerHTML = name;
 
-   addDropdown(element, name) {
-      var select = document.createElement("select");
-      element.appendChild(select);
-   }
+    // rowDropdown
+    this.addDropdown(td_dropdown, name);
 
-   test() {
-      console.log("test");
-   }
+    tableRow.appendChild(td_name);
+    tableRow.appendChild(td_dropdown);
+    table_body.appendChild(tableRow);
+  }
 
-   //  startdropdown(data) {
-   //     console.log("dsfsdgksdglk");
-   //     console.log(data);
-   //     var mytable = document.createElement("table");
-   //     var table_body = document.createElement("tbody");
+  addDropdown(element, name) {
+    var select = document.createElement("select");
+    element.appendChild(select);
+  }
 
-   //     for (var key in data) {
-   //        var tr = document.createElement("tr");
-   //        var td_name = document.createElement("td");
-   //        var td_dropdown = document.createElement("td");
-   //        var select = document.createElement("select");
+  test() {
+    console.log("test");
+  }
 
-   //        // System
-   //        td_name.innerHTML = key;
-   //        select.id = key + "_select";
+  //  startdropdown(data) {
+  //     console.log("dsfsdgksdglk");
+  //     console.log(data);
+  //     var mytable = document.createElement("table");
+  //     var table_body = document.createElement("tbody");
 
-   //        mytable.append(table_body);
-   //        table_body.append(tr);
-   //        tr.append(td_name);
-   //        tr.append(td_dropdown);
-   //        td_dropdown.append(select);
+  //     for (var key in data) {
+  //        var tr = document.createElement("tr");
+  //        var td_name = document.createElement("td");
+  //        var td_dropdown = document.createElement("td");
+  //        var select = document.createElement("select");
 
-   //        for (let i = 0; i < data.System.length; i++) {
-   //           var option = document.createElement("option");
-   //           option.value = data.System[i].Abk;
-   //           option.innerHTML = data.System[i].Name;
+  //        // System
+  //        td_name.innerHTML = key;
+  //        select.id = key + "_select";
 
-   //           // console.log(data.System[i].Abk);
-   //           // console.log(data.System[i].Name);
-   //           select.appendChild(option);
-   //        }
-   //     }
+  //        mytable.append(table_body);
+  //        table_body.append(tr);
+  //        tr.append(td_name);
+  //        tr.append(td_dropdown);
+  //        td_dropdown.append(select);
 
-   // document.getElementById("typ_table").append(mytable);
+  //        for (let i = 0; i < data.System.length; i++) {
+  //           var option = document.createElement("option");
+  //           option.value = data.System[i].Abk;
+  //           option.innerHTML = data.System[i].Name;
+
+  //           // console.log(data.System[i].Abk);
+  //           // console.log(data.System[i].Name);
+  //           select.appendChild(option);
+  //        }
+  //     }
+
+  // document.getElementById("typ_table").append(mytable);
 }
 
 // Read local File
