@@ -3,7 +3,8 @@
     {
       "Name": "Grimmaer Niederspannung 3.1",
       "Abk": "G31",
-      "default": false
+      "default": false,
+      "child": "TF"
     },
     {
       "Name": "Grimmaer Niederspannung 5.1",

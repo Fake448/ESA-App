@@ -4,111 +4,116 @@
 // - https://dmitripavlutin.com/javascript-fetch-async-await/
 
 class dropdown {
-  constructor(elementID) {
-   //  this.data = this.getData();
-   //  this.data = this.readData()
-    this.data = this.readData()
-    this.element = elementID;
+   /**
+    * @desc
+    *  test.
+    *
+    * @param evt
+    *  test2
+    */
+   constructor(el_ID) {
+      this.element = el_ID;
+      this.dataFile = "./data.json";
+   }
 
-  }
+   /**
+    * Illustrates line wrapping for long param/return descriptions.
+    *
+    * @param {string} foo This is a param with a description too long to fit in
+    *     one line.
+    * @return {number} This returns something that has a description too long to
+    *     fit in one line.
+    */
+   init() {
+      console.log("Init class... DropDown");
+      this.readData().then((data) => (this.data = data));
+      console.log("creating table");
+      this.createTable();
+   }
 
-  init() {
-    this.createTable();
-  }
+   // readData - async
 
-  // readData();
-  getData() {
-    fetch("./data.json")
-      .then((response) => response.json())
-      .then((jsondata) => {
-        this.data = jsondata;
-        console.log("getData :", this.data);
-      });
-  }
+   async readData() {
+      console.log("reading Data from... ", this.dataFile);
+      let res = await fetch(this.dataFile);
+      let data = await res.json();
+      console.log("data fetched :", data);
+      return data;
+   }
 
-  async readData() {
-    const response = await fetch("./data.json");
-    const d = await response.json()
-    this.testData = d
-   //  return d
-  }
+   // create Table
+   createTable() {
+      var table = document.createElement("table");
+      var tbody = document.createElement("tbody");
+      var el = document.getElementById(this.element);
 
-  createTable() {
-    var table = document.createElement("table");
-    var tbody = document.createElement("tbody");
+      // adding System
+      this.addRow(tbody, "System");
+      this.addRow(tbody, "sfdsd");
 
-    // adding System
-    this.addRow(tbody, "System");
-    this.addRow(tbody, "sfdsd");
+      table.appendChild(tbody);
+      el.appendChild(table);
+   }
 
-    console.log("here", this.data);
+   // add Row
+   addRow(table_body, name) {
+      var tableRow = document.createElement("tr");
+      var td_name = document.createElement("td");
+      var td_dropdown = document.createElement("td");
 
-    table.appendChild(tbody);
-    document.getElementById(this.element).appendChild(table);
-  }
+      // rowName
+      td_name.innerHTML = name;
 
-  addRow(table_body, name) {
-    var tableRow = document.createElement("tr");
-    var td_name = document.createElement("td");
-    var td_dropdown = document.createElement("td");
+      // rowDropdown
+      this.addDropdown(td_dropdown, name);
 
-    // rowName
-    td_name.innerHTML = name;
+      tableRow.appendChild(td_name);
+      tableRow.appendChild(td_dropdown);
+      table_body.appendChild(tableRow);
+   }
 
-    // rowDropdown
-    this.addDropdown(td_dropdown, name);
+   addDropdown(element, name) {
+      var select = document.createElement("select");
+      element.appendChild(select);
+   }
 
-    tableRow.appendChild(td_name);
-    tableRow.appendChild(td_dropdown);
-    table_body.appendChild(tableRow);
-  }
+   addList() {
+      // var list = document.createElement("li")
+   }
+   //  startdropdown(data) {
+   //     var mytable = document.createElement("table");
+   //     var table_body = document.createElement("tbody");
 
-  addDropdown(element, name) {
-    var select = document.createElement("select");
-    element.appendChild(select);
-  }
+   //     for (var key in data) {
+   //        var tr = document.createElement("tr");
+   //        var td_name = document.createElement("td");
+   //        var td_dropdown = document.createElement("td");
+   //        var select = document.createElement("select");
 
-  test() {
-    console.log("test");
-  }
+   //        // System
+   //        td_name.innerHTML = key;
+   //        select.id = key + "_select";
 
-  //  startdropdown(data) {
-  //     console.log("dsfsdgksdglk");
-  //     console.log(data);
-  //     var mytable = document.createElement("table");
-  //     var table_body = document.createElement("tbody");
+   //        mytable.append(table_body);
+   //        table_body.append(tr);
+   //        tr.append(td_name);
+   //        tr.append(td_dropdown);
+   //        td_dropdown.append(select);
 
-  //     for (var key in data) {
-  //        var tr = document.createElement("tr");
-  //        var td_name = document.createElement("td");
-  //        var td_dropdown = document.createElement("td");
-  //        var select = document.createElement("select");
+   //        for (let i = 0; i < data.System.length; i++) {
+   //           var option = document.createElement("option");
+   //           option.value = data.System[i].Abk;
+   //           option.innerHTML = data.System[i].Name;
 
-  //        // System
-  //        td_name.innerHTML = key;
-  //        select.id = key + "_select";
+   //           // console.log(data.System[i].Abk);
+   //           // console.log(data.System[i].Name);
+   //           select.appendChild(option);
+   //        }
+   //     }
 
-  //        mytable.append(table_body);
-  //        table_body.append(tr);
-  //        tr.append(td_name);
-  //        tr.append(td_dropdown);
-  //        td_dropdown.append(select);
-
-  //        for (let i = 0; i < data.System.length; i++) {
-  //           var option = document.createElement("option");
-  //           option.value = data.System[i].Abk;
-  //           option.innerHTML = data.System[i].Name;
-
-  //           // console.log(data.System[i].Abk);
-  //           // console.log(data.System[i].Name);
-  //           select.appendChild(option);
-  //        }
-  //     }
-
-  // document.getElementById("typ_table").append(mytable);
+   // document.getElementById("typ_table").append(mytable);
 }
 
-// Read local File
-
-var dd = new dropdown("TypSchluessel_Feld");
+var dd = new dropdown("test");
 dd.init();
+
